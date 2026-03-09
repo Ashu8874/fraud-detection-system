@@ -98,3 +98,31 @@ Open `http://localhost:5173`.
 
 - If `GEMINI_API_KEY` is not set, the service still works with rule-based scoring only.
 - Alerting currently logs structured alerts to stdout; you can replace it with email/Slack/webhook in `backend/src/services/alertService.js`.
+
+## Deploy On Vercel
+
+This repo is configured for a single Vercel project:
+
+- Frontend: `frontend` (Vite static build)
+- Backend API: `backend/api/index.js` (serverless function)
+- Routes:
+  - `/api/*` -> backend
+  - `/health` -> backend
+  - everything else -> frontend app
+
+### Steps
+
+1. Push latest code to GitHub (already done in your repo).
+2. In Vercel dashboard, click **Add New Project** and import `Ashu8874/fraud-detection-system`.
+3. Keep root directory as `/` (do not change), because `vercel.json` handles builds/routing.
+4. Add environment variables in Vercel Project Settings:
+   - `MONGODB_URI`
+   - `GEMINI_API_KEY` (optional)
+   - `GEMINI_MODEL` (optional, default: `gemini-1.5-flash`)
+   - `ALERT_RISK_THRESHOLD` (optional, default: `70`)
+5. Click **Deploy**.
+
+### Frontend API Base URL
+
+- In production, frontend calls same-domain `/api/*` automatically.
+- For local dev, it still uses `http://localhost:4000` by default.

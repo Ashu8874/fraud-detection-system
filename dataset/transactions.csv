@@ -1,0 +1,6 @@
+transaction_id,user_id,amount,currency,merchant,location,payment_method,device_id,timestamp,label
+trn_1001,user_01,45.99,USD,Groceries Store,New York,card,dev_abc12345,2026-03-08T08:15:00Z,0
+trn_1002,user_02,5200.00,USD,Crypto Exchange,Delhi VPN,prepaid,dev_qwe45678,2026-03-08T03:05:00Z,1
+trn_1003,user_03,120.50,USD,Ride Share,San Francisco,card,dev_mno99887,2026-03-08T14:40:00Z,0
+trn_1004,user_04,8700.00,USD,Gift Card Outlet,Proxy Location,giftcard,dev_xy123,2026-03-08T01:12:00Z,1
+trn_1005,user_05,300.00,USD,Online Retailer,Chicago,upi,dev_kjl55661,2026-03-08T11:50:00Z,0

@@ -30,6 +30,9 @@ fraud-detection-system
 |       +-- routes
 |       +-- services
 |
++-- api
+|   +-- index.js
+|
 +-- dataset
 |   +-- transactions.csv
 |
@@ -97,6 +100,8 @@ Open `http://localhost:5173`.
 ## Notes
 
 - If `GEMINI_API_KEY` is not set, the service still works with rule-based scoring only.
+- If `GEMINI_MODEL` is empty or invalid, the backend auto-discovers a supported Gemini model.
+- If Gemini returns key/auth errors (for example expired key), the API now falls back to rule-based scoring with a clean message.
 - Alerting currently logs structured alerts to stdout; you can replace it with email/Slack/webhook in `backend/src/services/alertService.js`.
 
 ## Deploy On Vercel
@@ -104,7 +109,7 @@ Open `http://localhost:5173`.
 This repo is configured for a single Vercel project:
 
 - Frontend: `frontend` (Vite static build)
-- Backend API: `backend/api/index.js` (serverless function)
+- Backend API: `api/index.js` (serverless function)
 - Routes:
   - `/api/*` -> backend
   - `/health` -> backend
@@ -118,7 +123,7 @@ This repo is configured for a single Vercel project:
 4. Add environment variables in Vercel Project Settings:
    - `MONGODB_URI`
    - `GEMINI_API_KEY` (optional)
-   - `GEMINI_MODEL` (optional, default: `gemini-1.5-flash`)
+   - `GEMINI_MODEL` (optional, recommended empty for auto-discovery)
    - `ALERT_RISK_THRESHOLD` (optional, default: `70`)
 5. Click **Deploy**.
 

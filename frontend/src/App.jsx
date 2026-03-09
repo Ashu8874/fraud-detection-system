@@ -110,7 +110,7 @@ export default function App() {
           <p className="eyebrow">Live Monitoring</p>
           <h1>Fraud Detection Dashboard</h1>
           <p className="hero-subtitle">
-            Analyze transactions in real time with rule-based checks plus Gemini signals.
+            Analyze transactions in real time with rule-based checks plus AI.
           </p>
         </div>
         <div className="kpi-grid">
